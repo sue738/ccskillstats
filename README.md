@@ -24,8 +24,8 @@ something you personally invoked.
 Not yet published to npm — build from this checkout:
 
 ```sh
-git clone https://github.com/sue738/playground.git
-cd playground/apps/ccskillstats
+git clone https://github.com/sue738/ccskillstats.git
+cd ccskillstats
 npm link   # or: npm install -g .
 ```
 
@@ -118,3 +118,15 @@ npm test
 Every case is a mistake this tool made against the real transcripts before it
 was fixed — including a 749 MB session that `readFileSync(file, 'utf8')` could
 not decode, whose invocations were being dropped with no error at all.
+
+## Security & trust
+
+A tool that inspects your sessions deserves maximum suspicion, so:
+
+- **Zero dependencies, no postinstall, no build step** — read it first, it's short
+- **Fully local** — nothing leaves your machine, no telemetry, no network calls
+- **Read-only** — it never modifies a transcript or skill file
+- Paranoid path: `git clone https://github.com/sue738/ccskillstats.git && node ccskillstats/bin/ccskillstats.js`
+
+## License
+MIT
