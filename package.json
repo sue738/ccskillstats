@@ -1,0 +1,39 @@
+{
+  "name": "ccskillstats",
+  "version": "0.1.0",
+  "description": "Which of your Claude Code skills actually fire? Counts both the Skill tool and typed /name, from local transcripts.",
+  "bin": {
+    "ccskillstats": "bin/ccskillstats.js"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "usage",
+    "analytics",
+    "xbar",
+    "cli"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "sue738",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sue738/ccskillstats.git"
+  },
+  "homepage": "https://github.com/sue738/ccskillstats#readme",
+  "bugs": {
+    "url": "https://github.com/sue738/ccskillstats/issues"
+  }
+}
