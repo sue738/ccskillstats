@@ -21,13 +21,12 @@ something you personally invoked.
 
 ## Install
 
-Not yet published to npm — build from this checkout:
-
 ```sh
-git clone https://github.com/sue738/ccskillstats.git
-cd ccskillstats
-npm link   # or: npm install -g .
+npm install -g ccskillstats
 ```
+
+Or run it once without installing: `npx ccskillstats`. To build from source:
+`git clone https://github.com/sue738/ccskillstats.git && cd ccskillstats && npm link`.
 
 Output is English by default; set `CCSKILLSTATS_LANG=ja` (or
 `LANG=ja_JP.UTF-8`) for Japanese.
