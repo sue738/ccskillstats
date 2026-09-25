@@ -19,6 +19,8 @@ ran — a skill fired while you were watching vs. one fired from `sdk-cli`
 (cron, launchd, CI). Mixing those up misreads a routine background job as
 something you personally invoked.
 
+> Also available as `npx agstats skills` in [agstats](https://github.com/sue738/agstats), which reads Claude Code, Codex CLI, Gemini CLI and Cursor transcripts side by side.
+
 ## Install
 
 ```sh

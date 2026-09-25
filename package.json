@@ -1,6 +1,6 @@
 {
   "name": "ccskillstats",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Which of your Claude Code skills actually fire? Counts both the Skill tool and typed /name, from local transcripts.",
   "bin": {
     "ccskillstats": "bin/ccskillstats.js"
