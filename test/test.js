@@ -245,4 +245,24 @@ test('isDifferentDevice: nonexistent path does not throw and is not treated as d
   assert.strictEqual(S.isDifferentDevice(0, '/no/such/path/at/all/xyzzy'), false);
 });
 
+test('CLI: a malformed --days / --top exits 2 instead of printing nothing', () => {
+  const { spawnSync } = require('child_process');
+  const home = fs.mkdtempSync(path.join(os.tmpdir(), 'ccskillstats-cli-'));
+  const proj = path.join(home, '.claude', 'projects', '-p-a');
+  fs.mkdirSync(proj, { recursive: true });
+  fs.writeFileSync(path.join(proj, 's.jsonl'), toolCall('hunt', new Date(Date.now() - 3600000).toISOString()) + '\n');
+  const bin = path.join(__dirname, '..', 'bin', 'ccskillstats.js');
+  const run = (...args) => spawnSync('node', [bin, '--no-archive', ...args], { encoding: 'utf8', env: Object.assign({}, process.env, { HOME: home, CCSKILLSTATS_LANG: 'en' }) });
+  try {
+    for (const args of [['--top', 'abc'], ['--top', '-1'], ['--top', '0'], ['--days', '-3'], ['--days', 'abc']]) {
+      assert.strictEqual(run(...args).status, 2, `${args.join(' ')} should exit 2`);
+    }
+    const good = run('--top', '5', '--days', '7');
+    assert.strictEqual(good.status, 0);
+    assert.ok(good.stdout.includes('hunt'));
+  } finally {
+    fs.rmSync(home, { recursive: true, force: true });
+  }
+});
+
 console.log(`\n${passed} passed`);

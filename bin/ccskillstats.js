@@ -64,8 +64,14 @@ function parseArgs(argv) {
       process.exit(2);
     }
   }
+  // A bad value used to be read as "nothing": --top abc printed an empty
+  // table, --days -3 an empty result, --days abc silently meant all history.
+  if (o.days != null && !(Number.isFinite(o.days) && o.days > 0)) usageError(L('--days: expected a positive number', '--days: 正の数で指定してください'));
+  if (o.top !== Infinity && !(Number.isInteger(o.top) && o.top > 0)) usageError(L('--top: expected a positive whole number', '--top: 正の整数で指定してください'));
   return o;
 }
+
+function usageError(msg) { console.error(msg); process.exit(2); }
 
 function pad(s, n) { return String(s) + ' '.repeat(Math.max(0, n - [...String(s)].length)); }
 function padL(s, n) { return ' '.repeat(Math.max(0, n - String(s).length)) + String(s); }
